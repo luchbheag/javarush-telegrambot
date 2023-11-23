@@ -10,7 +10,7 @@ import static com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.command.U
 public class UnknownCommandTest extends AbstractCommandTest {
     @Override
     String getCommandName() {
-        return "/sadsajdaskds";
+        return "/sadsajdssd";
     }
 
     @Override

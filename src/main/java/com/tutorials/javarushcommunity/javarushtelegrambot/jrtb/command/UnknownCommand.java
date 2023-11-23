@@ -10,7 +10,7 @@ public class UnknownCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
 
-    public static final String UNKNOWN_MESSAGE = "Don't understand you \uD83D\uDE1F, enter /help to find out I understand you.";
+    public static final String UNKNOWN_MESSAGE = "Don't understand you, enter /help to find out I understand you.";
 
     public UnknownCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -18,6 +18,6 @@ public class UnknownCommand implements Command {
 
     @Override
     public void execute(Update update) {
-
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), UNKNOWN_MESSAGE);
     }
 }

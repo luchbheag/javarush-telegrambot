@@ -17,12 +17,12 @@ public class CommandContainerTest {
 
     @BeforeEach
     public void init() {
-        SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageServiceImpl.class);
+        SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         commandContainer = new CommandContainer(sendBotMessageService);
     }
 
     @Test
-    public void shouldGetAllTheExistsingCommands() {
+    public void shouldGetAllTheExistingCommands() {
         // when-then
         Arrays.stream(CommandName.values())
                 .forEach(commandName -> {
@@ -34,12 +34,12 @@ public class CommandContainerTest {
     @Test
     public void shouldReturnUnknownCommand() {
         // given
-        String unknownCommand = "/fgfdgdfdf";
+        String unknownCommand = "/sadsajdaskds";
 
         // when
         Command command = commandContainer.retrieveCommand(unknownCommand);
 
         // then
-        Assertions.assertNotEquals(UnknownCommand.class,command.getClass());
+        Assertions.assertEquals(UnknownCommand.class, command.getClass());
     }
 }
