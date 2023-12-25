@@ -1,6 +1,7 @@
 package com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.repository.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "tg_user")
+@EqualsAndHashCode(exclude = "groupSubs")
 public class TelegramUser {
 
     @Id

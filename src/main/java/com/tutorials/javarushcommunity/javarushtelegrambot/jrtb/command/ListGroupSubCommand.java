@@ -3,7 +3,10 @@ package com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.command;
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.repository.entity.TelegramUser;
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.SendBotMessageService;
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.TelegramUserService;
+import org.springframework.util.CollectionUtils;
 import org.telegram.telegrambots.meta.api.objects.Update;
+
+import static com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.command.CommandName.ADD_GROUP_SUB;
 
 import javax.ws.rs.NotFoundException;
 
@@ -27,11 +30,16 @@ public class ListGroupSubCommand implements Command {
         TelegramUser telegramUser = telegramUserService.findByChatId(getChatId(update))
                 .orElseThrow(NotFoundException::new);
 
-        String message = "I found all your group subscriptions: \n\n";
-        String collectedGroupds = telegramUser.getGroupSubs().stream()
-                .map(it -> "Group: " + it.getTitle() + ", ID = " + it.getId() + " \n")
-                .collect(Collectors.joining());
+        String message;
+        if (CollectionUtils.isEmpty(telegramUser.getGroupSubs())) {
+            message = String.format("You have no supscriptions yet. To add subscription send %s", ADD_GROUP_SUB.getCommandName());
+        } else {
 
-        sendBotMessageService.sendMessage(telegramUser.getChatId(), message + collectedGroupds);
+            String collectedGroupds = telegramUser.getGroupSubs().stream()
+                    .map(it -> "Group: " + it.getTitle() + ", ID = " + it.getId() + " \n")
+                    .collect(Collectors.joining());
+            message = String.format("I found all your group subscriptions: %s\n\n", collectedGroupds);
+        }
+        sendBotMessageService.sendMessage(telegramUser.getChatId(), message);
     }
 }
