@@ -17,9 +17,13 @@ public class HelpCommand implements Command {
             + "<b>Start/stop work with the bot</b>\n"
             + "%s - start work with me\n"
             + "%s - stop work with me\n\n"
+            + "<b>Work with subscriptions</b>\n"
+            + "%s - subscribe on the group of the articles\n"
+            + "%s - get list of the groups you subscribed\n"
             + "%s - get help\n\n"
             + "%s - get statistic\n\n",
-                    START.getCommandName(), STOP.getCommandName(), HELP.getCommandName(), STAT.getCommandName());
+                    START.getCommandName(), STOP.getCommandName(), ADD_GROUP_SUB.getCommandName(),
+                    LIST_GROUP_SUB.getCommandName(), HELP.getCommandName(), STAT.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
