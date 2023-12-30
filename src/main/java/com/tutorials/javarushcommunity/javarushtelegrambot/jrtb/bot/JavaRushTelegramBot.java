@@ -7,6 +7,7 @@ import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.SendBotM
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

@@ -48,8 +48,6 @@ public class AddGroupSubCommand implements Command{
             if (isNull(groupById.getId())) {
                 sendGroupNotFound(chatId, groupId);
             }
-            System.out.println("here is fine");
-            System.out.println(groupById);
             GroupSub savedGroupSub = groupSubService.save(chatId, groupById);
             sendBotMessageService.sendMessage(chatId, "I subsribed you to group " + savedGroupSub.getTitle());
         } else {
