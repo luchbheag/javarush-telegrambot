@@ -64,7 +64,7 @@ public class GroupSubServiceImpl implements GroupSubService {
     public Optional<GroupSub> findById(Integer id) {
         return groupSubRepository.findById(id);
     }
-
+  
     @Override
     public List<GroupSub> findAll() {
         return groupSubRepository.findAll();

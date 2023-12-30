@@ -15,6 +15,5 @@ public interface GroupSubService {
     GroupSub save(GroupSub groupSub);
 
     Optional<GroupSub> findById(Integer id);
-
     List<GroupSub> findAll();
 }
