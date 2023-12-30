@@ -3,6 +3,7 @@ package com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service;
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.javarushclient.dto.GroupDiscussionInfo;
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.repository.entity.GroupSub;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -14,4 +15,6 @@ public interface GroupSubService {
     GroupSub save(GroupSub groupSub);
 
     Optional<GroupSub> findById(Integer id);
+
+    List<GroupSub> findAll();
 }
