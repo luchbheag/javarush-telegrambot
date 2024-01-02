@@ -21,11 +21,10 @@ public class HelpCommand implements Command {
             + "%s - subscribe on the group of the articles\n"
             + "%s - get list of the groups you subscribed\n"
             + "%s - delete group from your subscriptions\n"
-            + "%s - get help\n\n"
-            + "%s - get statistic\n\n",
+            + "%s - get help\n\n",
                     START.getCommandName(), STOP.getCommandName(), ADD_GROUP_SUB.getCommandName(),
                     LIST_GROUP_SUB.getCommandName(), DELETE_GROUP_SUB.getCommandName(),
-                    HELP.getCommandName(), STAT.getCommandName());
+                    HELP.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
