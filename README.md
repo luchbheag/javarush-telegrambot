@@ -3,7 +3,7 @@ JavaRush Telegram bot from community
 
 ## To-do:
 
-* Makes tests works well since connection with DB.
+* Makes steps for deployment process.
 
 
 ## Deployment
