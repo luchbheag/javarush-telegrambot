@@ -35,9 +35,7 @@ public class GroupSubServiceImpl implements GroupSubService {
         GroupSub groupSub;
         Optional<GroupSub> groupSubFromDB = groupSubRepository.findById(groupDiscussionInfo.getId());
         if (groupSubFromDB.isPresent()) {
-            System.out.println("if block");
             groupSub = groupSubFromDB.get();
-            System.out.println("after get");
             Optional<TelegramUser> first = groupSub.getUsers().stream()
                     .filter(it -> it.getChatId().equalsIgnoreCase(chatId))
                     .findFirst();

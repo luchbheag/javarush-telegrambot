@@ -18,18 +18,23 @@ services:
     build:
       context: .
     environment:
-      BOT_NAME: ${BOT_NAME}
-      BOT_TOKEN: ${BOT_TOKEN}
-      BOT_DB_USERNAME: ${BOT_DB_USERNAME}
-      BOT_DB_PASSWORD: ${BOT_DB_PASSWORD}
+#      BOT_NAME: ${BOT_NAME}
+#      BOT_TOKEN: ${BOT_TOKEN}
+#      BOT_DB_USERNAME: ${BOT_DB_USERNAME}
+#      BOT_DB_PASSWORD: ${BOT_DB_PASSWORD}
+      BOT_DB_USERNAME: 'dev_jrtb_db_user'
+      BOT_DB_PASSWORD: 'dev_jrtb_db_password'
     restart: always
+
   jrtb-db:
-    image: mysql:5.7
+    image: mysql:8.0
     restart: always
     environment:
-      MYSQL_USER: ${BOT_DB_USERNAME}
-      MYSQL_PASSWORD: ${BOT_DB_PASSWORD}
-      MYSQL_DATABASE: 'jrtb_db'
+#      MYSQL_USER: ${BOT_DB_USERNAME}
+#      MYSQL_PASSWORD: ${BOT_DB_PASSWORD}
+      MYSQL_DATABASE: 'dev_jrtb_db'
+      MYSQL_USER: 'dev_jrtb_db_user'
+      MYSQL_PASSWORD: 'dev_jrtb_db_password'
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3307:3306'

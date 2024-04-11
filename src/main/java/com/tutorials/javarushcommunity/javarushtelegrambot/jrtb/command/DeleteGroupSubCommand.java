@@ -64,7 +64,7 @@ public class DeleteGroupSubCommand implements Command {
 
 
         } else {
-            sendBotMessageService.sendMessage(chatId, "Wrond groupd ID format.\n " +
+            sendBotMessageService.sendMessage(chatId, "Wrong group ID format.\n " +
                     "ID must be positive integer number.");
         }
 
@@ -76,18 +76,21 @@ public class DeleteGroupSubCommand implements Command {
         List<GroupSub> groupSubs = telegramUserService.findByChatId(chatId)
                 .orElseThrow(NotFoundException::new)
                 .getGroupSubs();
+        String userGroupSubData;
         if (CollectionUtils.isEmpty(groupSubs)) {
-            message = "There is no group subscruptions yet. To add one send " + ADD_GROUP_SUB.getCommandName();
+            message = "You have no subscriptions yet. To add subscription send " + ADD_GROUP_SUB.getCommandName();
+            userGroupSubData = "";
         } else {
+            System.out.println("THERE");
             message = "To delete group subscription send command together with group ID. \n"
                     + "For example: " + DELETE_GROUP_SUB.getCommandName() + " 16 \n\n"
                     + "I prepared a list of all groups you subscribed \n\n"
                     + "group name - group ID \n\n"
                     + "%s";
+            userGroupSubData = groupSubs.stream()
+                    .map(group -> format("%s - %s \n", group.getTitle(), group.getId()))
+                    .collect(Collectors.joining());
         }
-        String userGroupSubData = groupSubs.stream()
-                .map(group -> format("%s - %s \n", group.getTitle(), group.getId()))
-                .collect(Collectors.joining());
 
         sendBotMessageService.sendMessage(chatId, format(message, userGroupSubData));
     }

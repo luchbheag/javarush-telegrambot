@@ -26,7 +26,7 @@ public class ListGroupSubCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        // TODO add eexception handling
+        // TODO add exception handling
         TelegramUser telegramUser = telegramUserService.findByChatId(getChatId(update))
                 .orElseThrow(NotFoundException::new);
 

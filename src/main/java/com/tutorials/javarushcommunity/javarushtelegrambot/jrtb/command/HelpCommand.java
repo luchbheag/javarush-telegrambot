@@ -20,7 +20,7 @@ public class HelpCommand implements Command {
             + "<b>Work with subscriptions</b>\n"
             + "%s - subscribe on the group of the articles\n"
             + "%s - get list of the groups you subscribed\n"
-            + "%s - delete group from your subscriptions\n"
+            + "%s - delete group from your subscriptions\n\n"
             + "%s - get help\n\n",
                     START.getCommandName(), STOP.getCommandName(), ADD_GROUP_SUB.getCommandName(),
                     LIST_GROUP_SUB.getCommandName(), DELETE_GROUP_SUB.getCommandName(),

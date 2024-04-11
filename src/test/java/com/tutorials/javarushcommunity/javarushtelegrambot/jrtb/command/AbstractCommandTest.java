@@ -1,9 +1,7 @@
 package com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.command;
 
 import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.bot.JavaRushTelegramBot;
-import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.SendBotMessageService;
-import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.SendBotMessageServiceImpl;
-import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.TelegramUserService;
+import com.tutorials.javarushcommunity.javarushtelegrambot.jrtb.service.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -18,7 +16,6 @@ abstract class AbstractCommandTest {
     protected JavaRushTelegramBot javaRushBot = Mockito.mock(JavaRushTelegramBot.class);
     protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(javaRushBot);
-
     abstract String getCommandName();
 
     abstract String getCommandMessage();
@@ -46,5 +43,18 @@ abstract class AbstractCommandTest {
 
         //then
         Mockito.verify(javaRushBot).execute(sendMessage);
+    }
+
+    public static Update prepareUpdate(Long chatId, String commandName) {
+        Update update = new Update();
+        Message message = Mockito.mock(Message.class);
+        Mockito.when(message.getChatId())
+                .thenReturn(chatId);
+        Mockito.when(message.getText())
+                .thenReturn(commandName);
+        update.setMessage(message);
+
+        return update;
+
     }
 }
